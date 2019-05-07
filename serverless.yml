@@ -7,10 +7,13 @@ custom:
   logLevel:
     prod: INFO
     default: DEBUG
+  serverless-iam-roles-per-function:
+    defaultInherit: true
 
 plugins:
   - serverless-pseudo-parameters
   - serverless-iam-roles-per-function
+  - serverless-plugin-tracing
 
 provider:
   name: aws
@@ -21,6 +24,14 @@ provider:
     TEAM: test
   environment:
     log_level: ${self:custom.logLevel.${self:custom.stage}, self:custom.logLevel.default}
+  tracing: true
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecords"
+      Resource:
+        - "*"
 
 functions:
   get-index:
