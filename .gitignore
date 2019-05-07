@@ -61,3 +61,7 @@ typings/
 .next
 
 .serverless
+
+# idea
+.idea/
+*.iml
