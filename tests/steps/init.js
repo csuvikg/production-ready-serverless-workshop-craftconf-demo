@@ -10,6 +10,7 @@ const init = async () => {
     process.env.AWS_REGION        = "eu-west-1"
     process.env.order_events_stream = 'orders-dev-csuvikg'
     process.env.restaurant_notification_topic = 'restaurants-dev-csuvikg'
+    process.env.TEST_ROOT = "https://9vz6omcjfd.execute-api.eu-west-1.amazonaws.com/dev"
 
     initialized = true
 }
